@@ -1,2 +1,0 @@
-from bookstore.product.serializers.category_serializer import CategorySerializer
-from bookstore.product.serializers.product_serializer import ProductSerializer

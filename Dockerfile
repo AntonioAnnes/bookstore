@@ -49,6 +49,9 @@ RUN apt-get update \
 WORKDIR $PYSETUP_PATH
 COPY poetry.lock pyproject.toml ./
 
+RUN pip install poetry==1.1.4 poetry-core==1.0.8 \
+  && poetry config virtualenvs.create false --local
+
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 RUN poetry install --no-dev
 
@@ -62,3 +65,5 @@ COPY . /app/
 EXPOSE 8000
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+
